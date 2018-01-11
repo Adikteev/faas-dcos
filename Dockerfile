@@ -1,8 +1,8 @@
 FROM golang:1.9.2
 
-RUN mkdir -p /go/src/github.com/realbot/faas-dcos/
+RUN mkdir -p /go/src/github.com/adikteev/faas-dcos/
 
-WORKDIR /go/src/github.com/realbot/faas-dcos
+WORKDIR /go/src/github.com/adikteev/faas-dcos
 
 COPY vendor     vendor
 COPY handlers	handlers
@@ -22,6 +22,6 @@ EXPOSE 8080
 ENV http_proxy      ""
 ENV https_proxy     ""
 
-COPY --from=0 /go/src/github.com/realbot/faas-dcos/faas-dcos  .
+COPY --from=0 /go/src/github.com/adikteev/faas-dcos/faas-dcos  .
 
 CMD ["./faas-dcos"]
