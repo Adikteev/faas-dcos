@@ -6,7 +6,7 @@ package main
 import (
 	"log"
 
-	"github.com/realbot/faas-dcos/handlers"
+	"github.com/adikteev/faas-dcos/handlers"
 	"github.com/realbot/faas-provider"
 
 	// until health check is merged...
@@ -15,11 +15,13 @@ import (
 	//bootTypes "github.com/openfaas/faas-provider/types"
 
 	marathon "github.com/gambol99/go-marathon"
+
+	"os"
 )
 
 func main() {
 	config := marathon.NewDefaultConfig()
-	config.URL = "http://master.mesos/service/marathon"
+	config.URL = os.Getenv("MARATHON_URL")
 	client, err := marathon.NewClient(config)
 	if err != nil {
 		log.Fatalf("Failed to create a client for marathon, error: %s", err)

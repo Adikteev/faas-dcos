@@ -21,3 +21,4 @@
 *.prof
 .vscode
 .DS_Store
+.idea
